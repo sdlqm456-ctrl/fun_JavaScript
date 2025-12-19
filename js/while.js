@@ -61,7 +61,7 @@ while (true) {
   sum += yourValue
 
 
-  count ++ //학생수
+  count ++ // 학생수
 // 최고득점 점수
 // 조건 : 현재 최고점수 vs. youVlaue 비교해서 현재값을 최고점수에 대입
 if (maxScore < yourValue) {
