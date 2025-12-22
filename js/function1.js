@@ -1,4 +1,4 @@
-// function.js
+// function1.js
 // 값 /기능
 //num = 0;
 // doIt = function() {
