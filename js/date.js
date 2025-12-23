@@ -27,16 +27,18 @@ const seconds = Math.floor(diff % 60); // 초
 console.log(`${hours} 시간  ${minutes} 분 ${seconds} 초`);
 
 let year = 2025;
-let month = 3;
+let month = 12;
 
 // 과제: 3월의 달력 만들기
 today = new Date();
 today.setFullYear(year);
-today.setMonth(month - 1); // 전날
+today.setMonth(month - 1, +1); // 전날
 today.setDate(1); // 0은 지난 달의 마지막 날을 말함 => 1일의 요일, 말일의 정보
 today.getDay();
 console.log(
-  `${today.setMonth(month - 1)} 월, ${today.getDay} 일, ${today.setDate} 날짜`
+  `${today.setMonth(
+    month - 1
+  )} 월, ${today.getDay()} 날짜, ${today.getDate()} 요일`
 );
 // 요일
 switch (today.getDay()) {
@@ -65,28 +67,39 @@ switch (today.getDay()) {
 
 // 계산
 // 1일이 화요일
-let pritCalendar;
-const spaces = 0; // 달력의 숫자를 앞당기고 싶을때 spaces를 0으로 하면 됨 spaces는 공란을 말함
+// let pritCalendar;
+const spaces = 1; // 달력의 숫자를 앞당기고 싶을때 spaces를 0으로 하면 됨 spaces는 공란을 말함
 // 배열
 // 31일이 마지막날
-const lastDate = 31;
-const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let htmlStr = `<table border = '2'><thead><tr>`;
-for (let day of days) {
-  htmlStr += `<th>${day}</th>`;
-}
-htmlStr += "</tr></thead><tbody><tr>";
-// 공란
-for (let s = 0; s < spaces; s++) htmlStr += `<td> </td>`;
-// 날짜
-for (let d = 1; d <= lastDate; d++) {
-  htmlStr += `<td>${d}</td>`;
-  if ((d + spaces) % 7 == 0) {
-    htmlStr += "</tr><tr>";
+function pritCalendar(yyyy, mm) {
+  const lastDate = 31;
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let htmlStr = `<table border = '2'><thead><tr>`;
+  for (let day of days) {
+    htmlStr += `<th>${day}</th>`;
   }
+  htmlStr += "</tr></thead><tbody><tr>";
+  // 공란
+  for (let s = 0; s < spaces; s++) {
+    htmlStr += `<td> </td>`;
+  }
+  // 날짜
+  for (let d = 1; d <= lastDate; d++) {
+    htmlStr += `<td>${d}</td>`;
+    if ((d + spaces) % 7 == 0) {
+      htmlStr += "</tr><tr>";
+    }
+  }
+  htmlStl = `<input></input>`;
+  document.querySelector("button").addEventListener("click", (e) => {
+    if (e.target.button == "calender") {
+      document.querySelector("button").forEach((elem) => {
+        console.log(elem);
+        elem.addEventListener("click", (e) => {});
+      });
+    }
+  });
 }
-htmlStl = `</tr></tbody></table>`;
-document.writeln(htmlStr);
 pritCalendar();
 
 // 객체, 메소드 =>
@@ -119,3 +132,13 @@ function printDay(now = new Date()) {
 }
 printDay(today); // 매개값
 console.log(today.getDate());
+
+// // 달력생성
+// function pritCalendar(yyyy, mm) {
+//   let today = new Date(); // Date 객체선언 => 2025년 5월
+//   today.setFullYear(yyyy); // 2025
+//   today.setMonth(mm - 1); // 2025.05
+//   today.setDate(1); // 2025.05.01
+
+//   // 1일의 요일정보
+// }

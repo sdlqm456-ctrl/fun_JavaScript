@@ -10,14 +10,14 @@
 // git commit -m "18일 숙제완료"
 // git push origin main
 
-function scoreInfo(){
+function scoreInfo() {
   sum = 0;
   let average = 0;
   let maxScore = 0;
   let count = 5; //5번 반복
-  
+
   for (let i = 0; i < count; i++) {
-    let maxScore = Math.floor(Math.random() * 70 ) +31;
+    let maxScore = Math.floor(Math.random() * 70) + 31;
     console.log(`생성된 점수 ${i + 1} : ${scoreInfo}`);
     sum += scoreInfo;
     if (scoreInfo > maxScore) {
@@ -31,12 +31,12 @@ function scoreInfo(){
 // 홀수값만 누적
 // 합계는 55
 // 함수: oddSum
-function scoreInfo(){
+function scoreInfo() {
   let sum = 0;
   let oddSum = 0;
-  for(let i = 1; i <= 10; i++) {
-    sum += i
-    if(i % 2 == 1){
+  for (let i = 1; i <= 10; i++) {
+    sum += i;
+    if (i % 2 == 1) {
       oddSum += i;
     }
   }
