@@ -91,16 +91,19 @@ function pritCalendar(yyyy, mm) {
     }
   }
   htmlStl = `<input></input>`;
-  document.querySelector("button").addEventListener("click", (e) => {
-    if (e.target.button == "calender") {
-      document.querySelector("button").forEach((elem) => {
-        console.log(elem);
-        elem.addEventListener("click", (e) => {});
-      });
-    }
-  });
 }
-pritCalendar();
+// 지난달로 넘어가는 버튼
+document.querySelector(".calend-prev").addEventListener("click", (e) => {
+  pritCalendar();
+});
+// 현재 날짜로 넘어가는 버튼
+document.querySelector(".calend-today").addEventListener("click", (e) => {
+  pritCalendar();
+});
+// 다음달로 넘어가는 버튼
+document.querySelector(".calend-next").addEventListener("click", (e) => {
+  pritCalendar();
+});
 
 // 객체, 메소드 =>
 // 콘솔에 요일 정보를 출력하는 함수
