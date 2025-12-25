@@ -7,7 +7,7 @@ let students = [
   { studNo: "25-003", studName: "박길동", score: 70 },
 ];
 
-// 기존의 tbody의 html 삭제.
+// 기존의 tbody의 html 삭제 => 기존데이터와 새 데이터가 누적되어 표시되기 때문
 const target = document.querySelector("div.list tbody");
 target.innerHTML = "";
 
@@ -16,13 +16,14 @@ makeList();
 // ------------------------이벤트---------------------------------------
 // 등록버튼.
 document
-  .querySelector('button[class*="success"]') //
+  .querySelector('button[class*="success"]') // class 속성 값에 포함된 문자열을 찾는것
   .addEventListener("click", (e) => {
     const studNo = document.querySelector("#studNo").value;
     const studName = document.querySelector("#studName").value;
     const score = document.querySelector("#score").value;
     // 항목입력X -> 입력하세요.
     if (!studNo || !studName || !score) {
+      // ! : 논리연산자 (값이 있으면 false, 값이없어나 공백 ture, ||: 셋 중 하나라도 공백인 경우 전체가 true)
       alert("입력하세요!");
       return;
     }
@@ -33,7 +34,7 @@ document
     //     return;
     //   }
     // }
-    let exists = students.some((elem) => elem.studNo == studNo);
+    let exists = students.some((elem) => elem.studNo == studNo); // students 배열에 입력한 학번과 같은값이 하나라도 있으면 true/ 없으면 false
     if (exists) {
       alert("동일한 학생번호 존재합니다.");
       return;
@@ -49,8 +50,8 @@ function makeList() {
   target.innerHTML = ""; // 기존목록 지우기.
   // 학생수만큼 생성.
   for (let i = 0; i < students.length; i++) {
-    //
-    let tr = makeTr(students[i]);
+    // student 배열에 있는 학생들을 처음부터 끝까지 꺼내서 반복한다는 뜻
+    let tr = makeTr(students[i]); // students [i]: 학생 한명의 정보를 받아 tr 생성
     // div.list tbody의 하위요소로 추가.
     target.appendChild(tr);
   }
@@ -60,7 +61,7 @@ function makeList() {
 function makeTr(student = {}) {
   let fields = ["studNo", "studName", "score"];
   // tr 생성.
-  let tr = document.createElement("tr");
+  let tr = document.createElement("tr"); // td요소를 만들어서 반환
   for (let prop of fields /*in student*/) {
     // prop in 반복하는 명령어 => 객체를 선언
     // td 생성.
@@ -68,7 +69,7 @@ function makeTr(student = {}) {
     td.innerText = student[prop];
     tr.appendChild(td);
   }
-  // <td><button>삭제</button></td>
+  // <td><button>삭제</button></td> => 삭제버튼 만들기
   let td = document.createElement("td"); // <td></td>를 만드는 과정
   let delBtn = document.createElement("button"); // <button>삭제</button>
   // 삭제버튼의 이벤트.
