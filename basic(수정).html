@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>index.html</title>
+    <style>
+      h3 {
+        color: red;
+      }
+      ul > li:nth-child(2) {
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>자바스트립트 연습</h3>
+    <ul id="second">
+      내가좋아하는 음식 (장수연)
+      <li>마라탕</li>
+      <li>떡볶이</li>
+      <li>초밥</li>
+    </ul>
+    년도: <input type="number" id="yyyy" />
+    <!---->
+    월: <input type="number" id="mm" value="12" />
+    <div id="calendar-header">
+  <button type="button" id="prev-month">◀️지난달</button>
+  <button type="button" id="current-month-year">달력출력</button>
+  <button type="button" id="next-month">다음달▶️</button>
+</div>
+<div id="calendar"></div>
+<script src="js/date.js"></script>
+    </div>
+  </body>
+</html>
