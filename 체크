@@ -13,8 +13,8 @@ document.querySelector("form").addEventListener("submit", (e) => {
   console.log(id.length);
   if (id.length < 4 || id.length > 15) {
     alert("4보다 크고 15보다 작은값을 입력하세요");
-    document.querySelector("#user-id").focus();
-    document.querySelector("#user-id").value = "";
+    document.querySelector("#user-id").focus(); // 빈값 입력시 focus주기
+    document.querySelector("#user-id").value = ""; // 값 초기화
     return;
   }
   if (password.length < 4) {
