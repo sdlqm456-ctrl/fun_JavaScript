@@ -1,43 +1,743 @@
-// function1.js
-// 값 /기능
-//num = 0;
-// doIt = function() {
-//         기능실행
-//}
-
-// 두 수를 비교해서 큰 수를 출력가능
-// 함수 선언
-function showMax(a, b) {
-  //paramater (매개변수)
-  if (a > b) {
-    console.log(`큰 값은 ${a}`);
-  } else {
-    console.log(`큰 값은 ${b}`);
+const jsonData = `[{
+  "id": 1,
+  "first_name": "Sapphira",
+  "last_name": "Jenkerson",
+  "email": "sjenkerson0@columbia.edu",
+  "gender": "Female",
+  "salary": 2831
+}, {
+  "id": 2,
+  "first_name": "Mattie",
+  "last_name": "Gauvin",
+  "email": "mgauvin1@scribd.com",
+  "gender": "Female",
+  "salary": 15971
+}, {
+  "id": 3,
+  "first_name": "Lisette",
+  "last_name": "Ferrolli",
+  "email": "lferrolli2@jalbum.net",
+  "gender": "Female",
+  "salary": 13032
+}, {
+  "id": 4,
+  "first_name": "Marven",
+  "last_name": "Lebond",
+  "email": "mlebond3@parallels.com",
+  "gender": "Male",
+  "salary": 11976
+}, {
+  "id": 5,
+  "first_name": "Ker",
+  "last_name": "Wiersma",
+  "email": "kwiersma4@arstechnica.com",
+  "gender": "Male",
+  "salary": 15809
+}, {
+  "id": 6,
+  "first_name": "Bartram",
+  "last_name": "Shatliffe",
+  "email": "bshatliffe5@cdbaby.com",
+  "gender": "Male",
+  "salary": 17179
+}, {
+  "id": 7,
+  "first_name": "Malia",
+  "last_name": "Frain",
+  "email": "mfrain6@tinyurl.com",
+  "gender": "Female",
+  "salary": 13179
+}, {
+  "id": 8,
+  "first_name": "Richmond",
+  "last_name": "Bamling",
+  "email": "rbamling7@discovery.com",
+  "gender": "Male",
+  "salary": 3480
+}, {
+  "id": 9,
+  "first_name": "Gael",
+  "last_name": "Hulles",
+  "email": "ghulles8@imgur.com",
+  "gender": "Male",
+  "salary": 9073
+}, {
+  "id": 10,
+  "first_name": "Prince",
+  "last_name": "Velareal",
+  "email": "pvelareal9@phpbb.com",
+  "gender": "Male",
+  "salary": 9656
+}, {
+  "id": 11,
+  "first_name": "Bruno",
+  "last_name": "Barrett",
+  "email": "bbarretta@dailymotion.com",
+  "gender": "Male",
+  "salary": 6265
+}, {
+  "id": 12,
+  "first_name": "Cairistiona",
+  "last_name": "Truss",
+  "email": "ctrussb@huffingtonpost.com",
+  "gender": "Female",
+  "salary": 6143
+}, {
+  "id": 13,
+  "first_name": "Hermione",
+  "last_name": "MacIntosh",
+  "email": "hmacintoshc@list-manage.com",
+  "gender": "Female",
+  "salary": 11176
+}, {
+  "id": 14,
+  "first_name": "Caryn",
+  "last_name": "Cicero",
+  "email": "ccicerod@purevolume.com",
+  "gender": "Female",
+  "salary": 7384
+}, {
+  "id": 15,
+  "first_name": "Buck",
+  "last_name": "Ropert",
+  "email": "broperte@census.gov",
+  "gender": "Male",
+  "salary": 4023
+}, {
+  "id": 16,
+  "first_name": "Laney",
+  "last_name": "Roebuck",
+  "email": "lroebuckf@about.me",
+  "gender": "Male",
+  "salary": 11754
+}, {
+  "id": 17,
+  "first_name": "Thaddeus",
+  "last_name": "Crips",
+  "email": "tcripsg@technorati.com",
+  "gender": "Male",
+  "salary": 15636
+}, {
+  "id": 18,
+  "first_name": "Bourke",
+  "last_name": "Bowdrey",
+  "email": "bbowdreyh@yale.edu",
+  "gender": "Male",
+  "salary": 2145
+}, {
+  "id": 19,
+  "first_name": "Ritchie",
+  "last_name": "Cullen",
+  "email": "rculleni@constantcontact.com",
+  "gender": "Male",
+  "salary": 7457
+}, {
+  "id": 20,
+  "first_name": "Kenon",
+  "last_name": "Cassells",
+  "email": "kcassellsj@house.gov",
+  "gender": "Male",
+  "salary": 11695
+}, {
+  "id": 21,
+  "first_name": "Letty",
+  "last_name": "Garric",
+  "email": "lgarrick@comcast.net",
+  "gender": "Female",
+  "salary": 8386
+}, {
+  "id": 22,
+  "first_name": "Delainey",
+  "last_name": "Sywell",
+  "email": "dsywelll@ft.com",
+  "gender": "Male",
+  "salary": 17203
+}, {
+  "id": 23,
+  "first_name": "Randall",
+  "last_name": "Palley",
+  "email": "rpalleym@oakley.com",
+  "gender": "Male",
+  "salary": 12213
+}, {
+  "id": 24,
+  "first_name": "Carling",
+  "last_name": "Greenacre",
+  "email": "cgreenacren@wikia.com",
+  "gender": "Non-binary",
+  "salary": 12718
+}, {
+  "id": 25,
+  "first_name": "Carny",
+  "last_name": "Ciobotaru",
+  "email": "cciobotaruo@google.fr",
+  "gender": "Non-binary",
+  "salary": 18010
+}, {
+  "id": 26,
+  "first_name": "Aimee",
+  "last_name": "Pegg",
+  "email": "apeggp@hhs.gov",
+  "gender": "Bigender",
+  "salary": 9489
+}, {
+  "id": 27,
+  "first_name": "Barbe",
+  "last_name": "Blamire",
+  "email": "bblamireq@alibaba.com",
+  "gender": "Female",
+  "salary": 12658
+}, {
+  "id": 28,
+  "first_name": "Kacy",
+  "last_name": "Del Checolo",
+  "email": "kdelchecolor@flickr.com",
+  "gender": "Female",
+  "salary": 2667
+}, {
+  "id": 29,
+  "first_name": "Audry",
+  "last_name": "Aubert",
+  "email": "aauberts@netscape.com",
+  "gender": "Female",
+  "salary": 8486
+}, {
+  "id": 30,
+  "first_name": "Nelly",
+  "last_name": "Littlecote",
+  "email": "nlittlecotet@pagesperso-orange.fr",
+  "gender": "Female",
+  "salary": 10379
+}, {
+  "id": 31,
+  "first_name": "Zeke",
+  "last_name": "Bell",
+  "email": "zbellu@sfgate.com",
+  "gender": "Male",
+  "salary": 3052
+}, {
+  "id": 32,
+  "first_name": "Malena",
+  "last_name": "Iwanowicz",
+  "email": "miwanowiczv@cdc.gov",
+  "gender": "Female",
+  "salary": 13061
+}, {
+  "id": 33,
+  "first_name": "Renault",
+  "last_name": "Havoc",
+  "email": "rhavocw@php.net",
+  "gender": "Male",
+  "salary": 2760
+}, {
+  "id": 34,
+  "first_name": "Neile",
+  "last_name": "Van Giffen",
+  "email": "nvangiffenx@nymag.com",
+  "gender": "Female",
+  "salary": 17820
+}, {
+  "id": 35,
+  "first_name": "Dixie",
+  "last_name": "Bradden",
+  "email": "dbraddeny@yellowpages.com",
+  "gender": "Female",
+  "salary": 19640
+}, {
+  "id": 36,
+  "first_name": "Elden",
+  "last_name": "Giordano",
+  "email": "egiordanoz@psu.edu",
+  "gender": "Male",
+  "salary": 3019
+}, {
+  "id": 37,
+  "first_name": "Shae",
+  "last_name": "Odom",
+  "email": "sodom10@mac.com",
+  "gender": "Female",
+  "salary": 13480
+}, {
+  "id": 38,
+  "first_name": "Salomon",
+  "last_name": "Housley",
+  "email": "shousley11@theatlantic.com",
+  "gender": "Male",
+  "salary": 15971
+}, {
+  "id": 39,
+  "first_name": "Alfy",
+  "last_name": "Nickell",
+  "email": "anickell12@answers.com",
+  "gender": "Male",
+  "salary": 14840
+}, {
+  "id": 40,
+  "first_name": "Julianna",
+  "last_name": "Sebert",
+  "email": "jsebert13@bluehost.com",
+  "gender": "Female",
+  "salary": 9727
+}, {
+  "id": 41,
+  "first_name": "Pierson",
+  "last_name": "Garrat",
+  "email": "pgarrat14@blogtalkradio.com",
+  "gender": "Male",
+  "salary": 4596
+}, {
+  "id": 42,
+  "first_name": "Elie",
+  "last_name": "Blancowe",
+  "email": "eblancowe15@irs.gov",
+  "gender": "Female",
+  "salary": 4696
+}, {
+  "id": 43,
+  "first_name": "Kelwin",
+  "last_name": "Tucknott",
+  "email": "ktucknott16@bizjournals.com",
+  "gender": "Genderfluid",
+  "salary": 3873
+}, {
+  "id": 44,
+  "first_name": "Stefa",
+  "last_name": "Wulfinger",
+  "email": "swulfinger17@loc.gov",
+  "gender": "Female",
+  "salary": 3268
+}, {
+  "id": 45,
+  "first_name": "Raffaello",
+  "last_name": "Spare",
+  "email": "rspare18@wikimedia.org",
+  "gender": "Male",
+  "salary": 10468
+}, {
+  "id": 46,
+  "first_name": "Stephine",
+  "last_name": "Hand",
+  "email": "shand19@linkedin.com",
+  "gender": "Agender",
+  "salary": 9053
+}, {
+  "id": 47,
+  "first_name": "Gael",
+  "last_name": "Radford",
+  "email": "gradford1a@dagondesign.com",
+  "gender": "Male",
+  "salary": 19702
+}, {
+  "id": 48,
+  "first_name": "Cayla",
+  "last_name": "Castanares",
+  "email": "ccastanares1b@europa.eu",
+  "gender": "Female",
+  "salary": 16929
+}, {
+  "id": 49,
+  "first_name": "Caressa",
+  "last_name": "Whawell",
+  "email": "cwhawell1c@nasa.gov",
+  "gender": "Female",
+  "salary": 13627
+}, {
+  "id": 50,
+  "first_name": "Eduino",
+  "last_name": "Djuricic",
+  "email": "edjuricic1d@myspace.com",
+  "gender": "Male",
+  "salary": 13660
+}, {
+  "id": 51,
+  "first_name": "Ellerey",
+  "last_name": "Cassely",
+  "email": "ecassely1e@tuttocitta.it",
+  "gender": "Male",
+  "salary": 12727
+}, {
+  "id": 52,
+  "first_name": "Saxon",
+  "last_name": "Teece",
+  "email": "steece1f@wired.com",
+  "gender": "Male",
+  "salary": 14510
+}, {
+  "id": 53,
+  "first_name": "Irvine",
+  "last_name": "Firebrace",
+  "email": "ifirebrace1g@tumblr.com",
+  "gender": "Male",
+  "salary": 19449
+}, {
+  "id": 54,
+  "first_name": "Heather",
+  "last_name": "Serraillier",
+  "email": "hserraillier1h@pcworld.com",
+  "gender": "Female",
+  "salary": 16051
+}, {
+  "id": 55,
+  "first_name": "Dani",
+  "last_name": "Sly",
+  "email": "dsly1i@bandcamp.com",
+  "gender": "Female",
+  "salary": 2162
+}, {
+  "id": 56,
+  "first_name": "Verna",
+  "last_name": "Prickett",
+  "email": "vprickett1j@guardian.co.uk",
+  "gender": "Non-binary",
+  "salary": 15403
+}, {
+  "id": 57,
+  "first_name": "Lotty",
+  "last_name": "Mill",
+  "email": "lmill1k@npr.org",
+  "gender": "Female",
+  "salary": 4050
+}, {
+  "id": 58,
+  "first_name": "Dalli",
+  "last_name": "Bahike",
+  "email": "dbahike1l@plala.or.jp",
+  "gender": "Male",
+  "salary": 8894
+}, {
+  "id": 59,
+  "first_name": "Barthel",
+  "last_name": "Skrine",
+  "email": "bskrine1m@washington.edu",
+  "gender": "Male",
+  "salary": 10190
+}, {
+  "id": 60,
+  "first_name": "Dame",
+  "last_name": "Lewsy",
+  "email": "dlewsy1n@jugem.jp",
+  "gender": "Polygender",
+  "salary": 12575
+}, {
+  "id": 61,
+  "first_name": "Gregoire",
+  "last_name": "Nortcliffe",
+  "email": "gnortcliffe1o@cisco.com",
+  "gender": "Male",
+  "salary": 3030
+}, {
+  "id": 62,
+  "first_name": "Dirk",
+  "last_name": "McGettrick",
+  "email": "dmcgettrick1p@gov.uk",
+  "gender": "Male",
+  "salary": 11657
+}, {
+  "id": 63,
+  "first_name": "Karlotta",
+  "last_name": "Sulland",
+  "email": "ksulland1q@hibu.com",
+  "gender": "Female",
+  "salary": 6228
+}, {
+  "id": 64,
+  "first_name": "Tyrus",
+  "last_name": "Tomalin",
+  "email": "ttomalin1r@e-recht24.de",
+  "gender": "Male",
+  "salary": 3490
+}, {
+  "id": 65,
+  "first_name": "Ursala",
+  "last_name": "Derrington",
+  "email": "uderrington1s@nymag.com",
+  "gender": "Female",
+  "salary": 16803
+}, {
+  "id": 66,
+  "first_name": "Gard",
+  "last_name": "Creaser",
+  "email": "gcreaser1t@about.me",
+  "gender": "Male",
+  "salary": 12942
+}, {
+  "id": 67,
+  "first_name": "Randie",
+  "last_name": "Evins",
+  "email": "revins1u@github.io",
+  "gender": "Female",
+  "salary": 16499
+}, {
+  "id": 68,
+  "first_name": "Mignonne",
+  "last_name": "Durand",
+  "email": "mdurand1v@nps.gov",
+  "gender": "Female",
+  "salary": 15777
+}, {
+  "id": 69,
+  "first_name": "Jaime",
+  "last_name": "Sember",
+  "email": "jsember1w@businessweek.com",
+  "gender": "Male",
+  "salary": 5405
+}, {
+  "id": 70,
+  "first_name": "Dietrich",
+  "last_name": "Ducket",
+  "email": "dducket1x@alexa.com",
+  "gender": "Male",
+  "salary": 8941
+}, {
+  "id": 71,
+  "first_name": "Tomi",
+  "last_name": "Corneil",
+  "email": "tcorneil1y@live.com",
+  "gender": "Female",
+  "salary": 16833
+}, {
+  "id": 72,
+  "first_name": "Marguerite",
+  "last_name": "Le Breton",
+  "email": "mlebreton1z@toplist.cz",
+  "gender": "Female",
+  "salary": 6932
+}, {
+  "id": 73,
+  "first_name": "Beatriz",
+  "last_name": "Ertelt",
+  "email": "bertelt20@si.edu",
+  "gender": "Female",
+  "salary": 10482
+}, {
+  "id": 74,
+  "first_name": "Meridith",
+  "last_name": "Croy",
+  "email": "mcroy21@sun.com",
+  "gender": "Bigender",
+  "salary": 12552
+}, {
+  "id": 75,
+  "first_name": "Kyle",
+  "last_name": "Hanster",
+  "email": "khanster22@sourceforge.net",
+  "gender": "Female",
+  "salary": 13280
+}, {
+  "id": 76,
+  "first_name": "Brianne",
+  "last_name": "Ropkins",
+  "email": "bropkins23@shutterfly.com",
+  "gender": "Female",
+  "salary": 8212
+}, {
+  "id": 77,
+  "first_name": "Loralie",
+  "last_name": "Jerosch",
+  "email": "ljerosch24@arstechnica.com",
+  "gender": "Female",
+  "salary": 16598
+}, {
+  "id": 78,
+  "first_name": "Ody",
+  "last_name": "Troup",
+  "email": "otroup25@mashable.com",
+  "gender": "Male",
+  "salary": 16023
+}, {
+  "id": 79,
+  "first_name": "Gerhardine",
+  "last_name": "Utteridge",
+  "email": "gutteridge26@jigsy.com",
+  "gender": "Female",
+  "salary": 14252
+}, {
+  "id": 80,
+  "first_name": "Meryl",
+  "last_name": "Fairbourne",
+  "email": "mfairbourne27@yandex.ru",
+  "gender": "Agender",
+  "salary": 14621
+}, {
+  "id": 81,
+  "first_name": "Sharia",
+  "last_name": "Shoebotham",
+  "email": "sshoebotham28@columbia.edu",
+  "gender": "Female",
+  "salary": 2623
+}, {
+  "id": 82,
+  "first_name": "Susanetta",
+  "last_name": "Farlane",
+  "email": "sfarlane29@bluehost.com",
+  "gender": "Female",
+  "salary": 10271
+}, {
+  "id": 83,
+  "first_name": "Oberon",
+  "last_name": "Rundall",
+  "email": "orundall2a@alexa.com",
+  "gender": "Male",
+  "salary": 14961
+}, {
+  "id": 84,
+  "first_name": "Gavra",
+  "last_name": "Grimsdale",
+  "email": "ggrimsdale2b@vimeo.com",
+  "gender": "Female",
+  "salary": 9192
+}, {
+  "id": 85,
+  "first_name": "Hetti",
+  "last_name": "Knibb",
+  "email": "hknibb2c@cloudflare.com",
+  "gender": "Female",
+  "salary": 7878
+}, {
+  "id": 86,
+  "first_name": "Concettina",
+  "last_name": "Elders",
+  "email": "celders2d@answers.com",
+  "gender": "Female",
+  "salary": 10683
+}, {
+  "id": 87,
+  "first_name": "Hubert",
+  "last_name": "Henzer",
+  "email": "hhenzer2e@psu.edu",
+  "gender": "Male",
+  "salary": 7757
+}, {
+  "id": 88,
+  "first_name": "Amy",
+  "last_name": "Cicerone",
+  "email": "acicerone2f@mediafire.com",
+  "gender": "Female",
+  "salary": 3724
+}, {
+  "id": 89,
+  "first_name": "Win",
+  "last_name": "Bedinn",
+  "email": "wbedinn2g@seattletimes.com",
+  "gender": "Male",
+  "salary": 5262
+}, {
+  "id": 90,
+  "first_name": "Alejandra",
+  "last_name": "Winslade",
+  "email": "awinslade2h@newsvine.com",
+  "gender": "Female",
+  "salary": 19751
+}, {
+  "id": 91,
+  "first_name": "Justinian",
+  "last_name": "Oates",
+  "email": "joates2i@cocolog-nifty.com",
+  "gender": "Male",
+  "salary": 15964
+}, {
+  "id": 92,
+  "first_name": "Hilly",
+  "last_name": "Lawrenson",
+  "email": "hlawrenson2j@ox.ac.uk",
+  "gender": "Male",
+  "salary": 2095
+}, {
+  "id": 93,
+  "first_name": "Louie",
+  "last_name": "Boxell",
+  "email": "lboxell2k@hexun.com",
+  "gender": "Male",
+  "salary": 7874
+}, {
+  "id": 94,
+  "first_name": "Chucho",
+  "last_name": "Geraghty",
+  "email": "cgeraghty2l@nps.gov",
+  "gender": "Male",
+  "salary": 17062
+}, {
+  "id": 95,
+  "first_name": "Eugene",
+  "last_name": "Hutchison",
+  "email": "ehutchison2m@techcrunch.com",
+  "gender": "Male",
+  "salary": 6161
+}, {
+  "id": 96,
+  "first_name": "Alonzo",
+  "last_name": "Scolli",
+  "email": "ascolli2n@ow.ly",
+  "gender": "Male",
+  "salary": 7390
+}, {
+  "id": 97,
+  "first_name": "Luise",
+  "last_name": "Schole",
+  "email": "lschole2o@amazon.com",
+  "gender": "Female",
+  "salary": 13642
+}, {
+  "id": 98,
+  "first_name": "Klaus",
+  "last_name": "Hannond",
+  "email": "khannond2p@state.tx.us",
+  "gender": "Male",
+  "salary": 5663
+}, {
+  "id": 99,
+  "first_name": "Korie",
+  "last_name": "Sprull",
+  "email": "ksprull2q@people.com.cn",
+  "gender": "Agender",
+  "salary": 6066
+}, {
+  "id": 100,
+  "first_name": "Joye",
+  "last_name": "Corrao",
+  "email": "jcorrao2r@domainmarket.com",
+  "gender": "Female",
+  "salary": 14542
+}]`;
+// 합계, 평균 등을 구하는 함수
+// parse: 분석하다
+// jsonData에 들어있는 json 문자열을 분석해서 나온 결과를 memberAry에 담는다
+const memberAry = JSON.parse(jsonData);
+function gatMemberInfo() {
+  console.log(memberAry);
+  let sum = 0;
+  let avg = 0; // nemderAry 급여 합계
+  let sumOfMale = 0; // 남성의 평균
+  let cntOfMale = 0; // 남성이 몇명인지
+  let agvOfMale = 0; // 남성의 인원
+  for (let elem of memberAry) {
+    sum += elem.salary;
+    if (elem.gender == "Male") {
+      sumOfMale += elem.salary;
+      cntOfMale++;
+    }
   }
-} // end of showMax(a,b) 
-
-let n1 = 10,
-  n2 = 20;
-// 함수 호출
-showMax(n1, n2); // arguement 매개값
-
-let m1 = 30,
-  m2 = 40;
-showMax(n1, n2); // arguement 매개값
-
-if (n1 > n2) {
-  console.log(`큰값은 ${n1}`);
-} else {
-  console.log(`큰값은 ${n2}`);
+  avg = sum / memberAry.length; // 전체평균
+  agvOfMale = sumOfMale / cntOfMale; // 남성평균
+  return {
+    sum: sum,
+    sumOfMale: sumOfMale,
+    avg: avg,
+    agvOfMale: agvOfMale,
+  }; // end of getMemberInfo
 }
+// 객체
+let result = gatMemberInfo();
+console.log(
+  `급여 합계: ${result.sum}, 전체 평균의 합계: ${result.avg}, 
+  남성의 합계급여: ${result.sumOfMale}, 남자 평균급여 ${result.agvOfMale} `
+);
 
-// 매개변수 2개, 2개의 곱을 콘솔에 출력하는 함수 getMulti 함수
+// stringify: 문자열화 하다
+let jsonStr = `{"name": "hong", "age": 20, "weight": 67}`;
+let obj = JSON.parse(jsonStr); // 문자열 => 객체변경
+let jsonStr2 = JSON.stringify(obj); // 객체 => 문자열로 변경
 
-function getMulti(a,b) {
-  let result = a * b;
-  console.log (`두 수의 곱은 ${a}`);
-  return result; // 반환
-}
-let result = getMulti(m1, 50);
-result = getMulti(2,3);
-console.log(result);
+console.log(jsonStr);
+console.log(obj); // 객체
+console.log(jsonStr2);
