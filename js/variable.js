@@ -1,52 +1,52 @@
-// 변수 선언
+// 변수선언
 
 // ES6(2025) 이전
-//var 는 중복선언가능 (문제가 될 수 있음 => window 객체에 속성됨)
+// var: 변수 => 중복선언 ok (window 객체에 속성됨)
 var name = "Hong";
 var name = "Hwang";
 
-//ES6 이후
-// let은 중복선언 불가 / 재할당 가능
+// ES6 이후
+// let: 변수 => 중복선언 X (재할당 가능)
 // let name = "Hong";
 let age = 10;
 age = 20;
 
-// const: 상수 변수에는 재할당 불가 (한번 값이 지정된 경우 변경할 수가 없음)
-const myAge = 30;
+// const: 상수변수 => 재할당 불가 (값이 한번 정해지면 변경 X)
 // myAge = 31;
+const myAge = 30;
 
-// 자바스크립트에서는 대소문자 구분을 해서 같은 myage 라도 아래는 대문자를 사용하지 않았기 때문에 다른값으로 인식하게 됨
-// 단어의 두번째나 세번째 글자에는 대문자로 사용해야 구분하기 좋음
+// 대소문자 구분 O  => 같은 변수 라도 대문자를 사용하지 않아 다른값으로 인식
+// 변수의 두번째 세번째 글자에는 대문자를 사용해야 구분하기 좋음
+// createElement: 새로운 테그를 만들때 사용 (동적으로 추가) / !=: 비교연산자 (true / false)
 // createElement () != createElement
 let my_age = 10;
 
-// window 객체 (브라우저) 출력 구문
+// window 객체 (브라우저) 출력구문
 // console.log(window);
 
 // createElement: 객체를 반환하는 명령어
-let liTag = document.createElement("li"); // <li></li> 를 만들어서 liTag라는 변수에 담기
+let liTag = document.createElement("li"); // <li></li> 테그 만들기
 liTag = {};
 
 // 자바
-//int myAge = 10;
+// int myAge = 10;
 
-// 자료형 (Date Type) => 원시자료형: 값이 단순함
+// 자료형 (Date Type) => 원시자료형 (값이 단순)
 let loginID = 10; // 타입명: number
 loginID = "user01"; // 타입명: string
 loginID = true; // 타입명: boolean
 loginID = null; // 타입명: odject
 
 let loginPw; // 타입명: undifined (값이 없음)
-// loginPw = new Symbol(); // 똑같은 값을 다르게 처리
+// loginPw = new Symbol(); => 똑같은 값을 다르게 처리
 console.log(typeof loginID);
-//----------------------------------------------------------------------------------------------
 
-// 객체선언 => 복합자료형: 값이 다양함
+// 객체선언 => 복합자료형 (값이 다양)
 // const 객체 = {} => 빈객체 생성
-// const myInfo = new Object(); 객체선언방식
+// const myinfo = new Object(); 객체선언방식
 const myInfo = {
   name: "Hong",
-  phone: "010-1234-1234",
+  phone: "010-1234-4678",
   showInfo: function () {
     console.log(`이름은 ${this.name}, 연락처는 ${this.phone}`);
   },
@@ -58,43 +58,42 @@ const myInfo = {
 // 비교 document.createElement()
 console.log(myInfo.name);
 console.log(myInfo["phone"]);
-myInfo.showInfo(); // myInfo.showInfo() => 메소드 (입력한 값의 정보를 가지고 있음)
+myInfo.showInfo(); // myInfo.showInfo() => 메소드 (입력한 값의 정보를 가짐)
 
-// 속성값 변경하기
+// 속성값 변경
 myInfo["name"] = "Hwang";
 myInfo.phone = "010-2222-3333";
 myInfo.showInfo();
 
-// 객체의 복사
+// 객체 복사
+
 // 원시유형
 let hisAge = 20;
-let yourAge = myAge; // 실제값을 저장
+let yourAge = myAge; // 실제값 저장
 hisAge = 21;
 yourAge = 21;
 console.log(yourAge);
 
 // 객체
-let hisInfo = {
-  name: "Park",
-  age: 20,
-};
-let yourInfo = hisInfo; // 객체의 주소값을 참조
+let hisInfo = hisInfo; // 객체의 주소값 참고
+
 // hisInfo 값 변경
 // hisInfo.name = "Choi";
 // hisInfo.age = 30;
 // console.log(yourInfo == hisInfo); yourInfo 와 hisInfo의 값이 동일하기 때문에 true로 출력됨
-// -------------------------------------------------------------------------------------------------
+
 // 새로운 객체 할당
-hisInfo = {
-  name: "Park",
-  age: 20,
-}; // 새로운 객체를 할당하게 되어서 다른 객체로 인식하기 때문에 새로운 객체의 주소값을 참조하고 있어 false로 출력하게 됨
+// 새로운 객체를 할당하게 되어서 다른 객체로 인식하기 때문에 새로운 객체의 주소값을 참조하고 있어 false로 출력하게 됨
 // console.log(yourInfo == hisInfo);
-// ----------------------------------------------------------------------------------------------
+hisInfo = {
+  name: "park",
+  age: 20,
+};
+
 // 값을 복사하는 명령어
 // assign({}, 객체명): 새로운 객체를 만들어서 복사하기 => 내용을 바꿔도 서로다른 객체로 인식해서 원래 저장했던 값으로 콘솔 출력
 yourInfo = Object.assign({}, hisInfo);
-hisInfo.name = "Choi";
+hisInfo.name = "choi";
 hisInfo.age = 30;
 // yourInfo = hisInfo;
 console.log(yourInfo); // 타입명: false
