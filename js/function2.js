@@ -124,7 +124,7 @@ document.querySelector("ul.pagination").addEventListener("click", (e) => {
   // 클릭되는 대상 파악
   let selectPage = 1;
   if (e.target.tagName == "A") {
-    selectPage = e.target.detaset.page; // <a data-page = "1">1<a> 데이터 속성을 가진 내용을 관리해주는 명렁어
+    selectPage = e.target.dataset.page; // <a data-page = "1">1<a> 데이터 속성을 가진 내용을 관리해주는 명렁어
     // 페이징 목록
     page = selectPage;
     generatePagingList();
