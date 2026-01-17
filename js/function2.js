@@ -64,6 +64,7 @@ function generatePagingList() {
   // 1 ~ 10 반복하면서 <li class="page-item"><a class="page-link" href="#">1</a></li> 만들기
 
   // 1. prev 생성
+  // setAttribute: 객체에 속성을 설정하거나 기존 속성값을 변경
   let liTag = document.createElement("li");
   liTag.className = "page-item";
   let ahref = document.createElement("a");
