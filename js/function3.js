@@ -44,13 +44,18 @@ function showPageList(pg = 1) {
   }
 } // end of showPageList
 
-// // insertAdjacementHTML을 사용하여 재구성
-// tr 형태의 html로 만들어 화면에 출력
+// insertAdjacementHTML을 사용하여 재구성
+// 표(tr) 형태의 html로 만들어 화면에 출력하는 명령어
+// showPageList2 : 페이지별 목록을 보여주는 함수
+// page = 1: 함수 호출시 페이지 번호를 주지 않으면 자동으로 1페이지
 function showPageList2(page = 1) {
+  // 배열에서 잘라낼 범위
   let start = (page - 1) * pageSize; // 20
   let end = page * pageSize; // 30
+  // 전체 목록에서 현제 페이지 데이터 추춯
+  // slice: 일부분
   let pageAry = totalList.slice(start, end);
-
+  // 배열 => <tr>형태 문자열 변경
   const listStr = `${pageAry
     .map(
       (elem) => `<tr>
@@ -61,9 +66,9 @@ function showPageList2(page = 1) {
                    <td><button onclick="deleteRow(${elem.id})" class="btn btn-danger">삭제</button></td>
                  </tr>`,
     )
-    .join("")}`;
+    .join("")}`; // 배열을 하나의 문자열로 합하기
   // 목록 출력하기.
-  target.innerHTML = listStr;
+  target.innerHTML = listStr; // 현재 페이지에 해당하는 데이터만 테이블에 표시
 }
 showPageList2();
 
@@ -79,9 +84,9 @@ function generatePaginList() {
     next = false; // 이후 페이지
 
   // 현재 페이지 기준으로 계산
-  endPage = Math.ceil(page / 10) * 10;
+  endPage = Math.ceil(page / 10) * 10; // 현재 페이지가 속한 페이지 묶음의 끝 번호
   startPage = endPage - 9;
-  // 실제 마지막 페이지보다 작음
+  // 실제 마지막 페이지보다 작음: endPage가 realEnd 보다 크면 realEnd 까지만 보여주기
   endPage = endPage > realEnd ? realEnd : endPage;
   // 이전, 이후 페이지 계산
   prev = startPage == 1 ? false : true;
@@ -91,23 +96,25 @@ function generatePaginList() {
 
   // 1. previous 생성
   // setAttribute: 객체에 속성을 설정하거나 기존 속성값을 변경
-  const prevStr = `b<li class="page-item ${prev ? "" : "disabled"}">
+  const prevStr = `<li class="page-item ${prev ? "" : "disabled"}">
                      <a class="page-link" href="${
                        prev ? "#" : ""
+                       // Previous 클릭 시 이전페이지 묶음의 마지막페이지로 이동
                      }" data-page="${startPage - 1}">Previous</a>
                    </li>`;
-  ulPagination.insertAdjacentHTML("beforeend", prevStr);
+  ulPagination.insertAdjacentHTML("beforeend", prevStr); // <ul> 테그 끝에 추가
 
   // 2. 페이지 수만큼 출력
+  // for문 부분: 페이지 번호버튼생성: 현재페이지 묶음에 해당하는 번호만 반복
   for (let p = startPage; p <= endPage; p++) {
-    const pageStr = `<li class="page-item ${p == page ? "active" : ""}"
+    const pageStr = `<li class="page-item ${p == page ? "active" : ""}" 
                          aria-current=${p == page ? "page" : ""}
                      >
                        <a class="page-link" href="#" data-page="${p}">${p}</a>
                      </li>`;
     ulPagination.insertAdjacentHTML("beforeend", pageStr);
   }
-  // 3. Next 부분 생성
+  // 3. Next 부분 생성 (disabled: 비활성화)
   const nextStr = `<li class="page-item ${next ? "" : "disabled"}">
                      <a class="page-link" data-page="${endPage + 1}"
                         href="${next ? "#" : ""}"
@@ -118,11 +125,12 @@ function generatePaginList() {
 generatePaginList();
 
 // 삭제기능
+// deleteRow(id): id 기준 행 삭제
 function deleteRow(id) {
   console.log(id);
-  totalList = totalList.filter((elem) => elem.id != id);
+  totalList = totalList.filter((elem) => elem.id != id); // totalList 중에서 id가 삭제하려는 id와 다른 것들만 새 배열로 만든다
   generatePaginList(page);
-  showPageList(page);
+  showPageList(page); // 현재 페이지 기준 삭제된 데이터 재외하고 다시 그리기
 }
 // ----------------이벤트 목록---------------------------------------------
 
@@ -137,4 +145,5 @@ document.querySelector("ul.pagination").addEventListener("click", (e) => {
     showPageList(selectPage);
   }
 });
+
 
