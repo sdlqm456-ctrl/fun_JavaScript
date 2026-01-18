@@ -1,73 +1,58 @@
-//while.js 
+// while.js
+
 for (let i = 1; i <= 5; i += 1) {
-  //
-  // console.log(`i의 값은 ${i}`);
-}
-// while(조건) { 실행블럭 }
-let i = 1;
-while (i <= 5) {
   console.log(`i의 값은 ${i}`);
-  i++
 }
 
-// 조건을 만족할 동안에만 실행
+// while 조건문
+let i = 1;
+while (i <= 5) {
+  console.log(`i의 값은 ${i}`, i++);
+}
+
+// 조건을 만족할때 실행
+// Math.random(): 1 ~ 10미만 랜덤 숫자 생성
 while (true) {
-  let num = Math.ceil(Math.random() * 10); //1 ~ 10 임의의 수 생성
+  let num = Math.ceil(Math.random() * 10);
   console.log(`num => ${num}`);
+  // 생성된 수가 9면 반복문 종료 ( break: 반목문 종료 명령어)
   if (num == 9) {
-    break; //whlie 반복을 종료
+    break;
   }
 }
 
-// 수를 입력받아서  합을 구하고 quit 입력하면 반복종료
+// 입력 받은 수의 합을 구하기
+// parseInt: 문자열 => 정수로 변환
 let sum = 0;
 if (sum != 0) {
   while (true) {
-    let yourValue = prompt("숫자를 입력하세요. 종료하면 quit 입력.");
-    // 종료 => quit 입력
+    let yourValue = prompt("숫자를 입력하세요 종료할려면 quit입력 ");
     if (yourValue == "quit") {
-      break; // while 반복을 종료.
+      break;
     }
-    yourValue = parseInt(yourValue); // 문자를 => 숫자 타입으로 형 변환
+    yourValue = parseInt(yourValue);
     sum += yourValue;
   }
-  console.log(`합계 : ${sum}`);
+  console.log(`합계: ${sum}`);
 }
 
-// Math.remdom() => 1 ~ 10 범위의 값을 생성
-// 5가 되면 반복문을 종료
-// sum에 누적
-while (true) {
-  let num = Math.ceil(Math.random() * 10);
-  sum += num;
-  if (num == 5) {
-    break
-  }
-}
-console.log(`합계: ${sum}`); 
-// 학생의 점수 => quit 종료
-// 반 평균 => 합계점수 / 사람의 수
-// "평균은 75점 입니다."
-
-sum =0;
+// 학생의 점수 구하기
+sum = 0;
 let count = 0;
-let maxScore = 0; 
+let maxScore = 0;
 while (true) {
-  let yourValue = prompt("학생의 점수를 입력하세요. 종료하면 quit 입력");
-  if (yourValue == "quit"){
-    break; 
+  let yourValue = prompt("학생의 점수를 입력하세요. 종료할려면 quit 입력");
+  if (yourValue == "quit") {
+    break;
   }
-  yourValue = parseInt(yourValue); 
-  sum += yourValue
+  yourValue = parseInt(yourValue);
+  sum += yourValue;
+  count++; // 점수가 1개씩 입력될때마다 1증가
 
-
-  count ++ // 학생수
-// 최고득점 점수
-// 조건 : 현재 최고점수 vs. youVlaue 비교해서 현재값을 최고점수에 대입
-if (maxScore < yourValue) {
- 
-   maxScore = yourValue;
+  // 학생수, 최고점수 구하기
+  // 조건: 현재 최고점수 / youVlaue 비교해서 현재값을 최고점수에 대입
+  if (maxScore < yourValue) {
+    maxScore = yourValue;
   }
 }
-console.log(`평균 : ${sum/count} , 최고점수 : ${maxScore}`);
-
+console.log(`평균: ${sum / count}, 최고점수: ${maxScore}`);
