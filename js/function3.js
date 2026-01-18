@@ -44,7 +44,8 @@ function showPageList(pg = 1) {
   }
 } // end of showPageList
 
-// // insertAdjacementHTML을 사용하여 재구성.
+// // insertAdjacementHTML을 사용하여 재구성
+// tr 형태의 html로 만들어 화면에 출력
 function showPageList2(page = 1) {
   let start = (page - 1) * pageSize; // 20
   let end = page * pageSize; // 30
@@ -136,3 +137,4 @@ document.querySelector("ul.pagination").addEventListener("click", (e) => {
     showPageList(selectPage);
   }
 });
+
