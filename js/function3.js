@@ -2,6 +2,7 @@
 
 let page = 1; // 현재페이지
 let totalCnt = memberAry.length;
+const pageSize = 5; // 페이지당 목록
 let realEnd = Math.ceil(totalCnt / pageSize);
 
 //---------------------------------------함수부분------------------------------------
@@ -24,8 +25,6 @@ function makeTr(member) {
 // 맴버 수 만큼 <tr>생성
 // 많은 양의 데이터를 페이지로 나누기
 const target = document.querySelector("#target");
-
-const pageSize = 5; // 페이지당 목록
 
 // 페이지 별 목록 보여주기
 // 값에 따라 보여주는 정보 반환
@@ -54,7 +53,7 @@ function showPageList2(page = 1) {
   let end = page * pageSize; // 30
   // 전체 목록에서 현제 페이지 데이터 추춯
   // slice: 일부분
-  let pageAry = totalList.slice(start, end);
+  let pageAry = memberAry.slice(start, end);
   // 배열 => <tr>형태 문자열 변경
   const listStr = `${pageAry
     .map(
@@ -64,7 +63,7 @@ function showPageList2(page = 1) {
                    <td>${elem.last_name}</td>
                    <td>${elem.salary}</td>
                    <td><button onclick="deleteRow(${elem.id})" class="btn btn-danger">삭제</button></td>
-                 </tr>`,
+                 </tr>`
     )
     .join("")}`; // 배열을 하나의 문자열로 합하기
   // 목록 출력하기.
@@ -145,5 +144,3 @@ document.querySelector("ul.pagination").addEventListener("click", (e) => {
     showPageList(selectPage);
   }
 });
-
-

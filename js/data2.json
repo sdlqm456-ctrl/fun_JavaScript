@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "first_name": "Duky",
+    "last_name": "Greave",
+    "email": "dgreave0@tamu.edu",
+    "gender": "Male",
+    "salary": 9065
+  },
+  {
+    "id": 2,
+    "first_name": "Say",
+    "last_name": "Sclanders",
+    "email": "ssclanders1@nsw.gov.au",
+    "gender": "Male",
+    "salary": 6170
+  },
+  {
+    "id": 3,
+    "first_name": "Nehemiah",
+    "last_name": "Wagon",
+    "email": "nwagon2@howstuffworks.com",
+    "gender": "Male",
+    "salary": 18015
+  },
+  {
+    "id": 4,
+    "first_name": "Ange",
+    "last_name": "Gillmore",
+    "email": "agillmore3@angelfire.com",
+    "gender": "Male",
+    "salary": 8871
+  },
+  {
+    "id": 5,
+    "first_name": "Manfred",
+    "last_name": "Lade",
+    "email": "mlade4@mapy.cz",
+    "gender": "Male",
+    "salary": 5266
+  },
+  {
+    "id": 6,
+    "first_name": "Jana",
+    "last_name": "Krzyzowski",
+    "email": "jkrzyzowski5@fda.gov",
+    "gender": "Female",
+    "salary": 11198
+  },
+  {
+    "id": 7,
+    "first_name": "Simeon",
+    "last_name": "McClarence",
+    "email": "smcclarence6@live.com",
+    "gender": "Male",
+    "salary": 16226
+  },
+  {
+    "id": 8,
+    "first_name": "Henryetta",
+    "last_name": "Nixon",
+    "email": "hnixon7@senate.gov",
+    "gender": "Bigender",
+    "salary": 15983
+  },
+  {
+    "id": 9,
+    "first_name": "Deny",
+    "last_name": "Overill",
+    "email": "doverill8@github.io",
+    "gender": "Female",
+    "salary": 2522
+  },
+  {
+    "id": 10,
+    "first_name": "Julieta",
+    "last_name": "Koeppe",
+    "email": "jkoeppe9@usa.gov",
+    "gender": "Female",
+    "salary": 3835
+  },
+  {
+    "id": 11,
+    "first_name": "Emerson",
+    "last_name": "Brice",
+    "email": "ebricea@1688.com",
+    "gender": "Male",
+    "salary": 13105
+  },
+  {
+    "id": 12,
+    "first_name": "Korella",
+    "last_name": "Daunay",
+    "email": "kdaunayb@nature.com",
+    "gender": "Female",
+    "salary": 14890
+  },
+  {
+    "id": 13,
+    "first_name": "Moreen",
+    "last_name": "Haylett",
+    "email": "mhaylettc@loc.gov",
+    "gender": "Female",
+    "salary": 2473
+  },
+  {
+    "id": 14,
+    "first_name": "Pearline",
+    "last_name": "Esch",
+    "email": "peschd@altervista.org",
+    "gender": "Female",
+    "salary": 3595
+  },
+  {
+    "id": 15,
+    "first_name": "Willem",
+    "last_name": "Wherry",
+    "email": "wwherrye@sbwire.com",
+    "gender": "Male",
+    "salary": 11467
+  }
+]

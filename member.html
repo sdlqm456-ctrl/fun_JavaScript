@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -15,29 +15,29 @@
       integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
       crossorigin="anonymous"
     ></script>
-    <style>
-      div.container {
-        width: 530px;
-        height: 320px;
-        background-color: rgb(167, 181, 219);
-      }
-      div.container > span {
-        display: inline-block;
-        width: 110px;
-        margin: 5px;
-        padding: 2px;
-        background-color: rgb(120, 197, 172);
-      }
-    </style>
   </head>
   <body>
-    <h3>자바스크립트2</h3>
-    입력: <input type="text" id="user_input" />
-    <button class="btn btn-secondary">찾기</button>
-    <div class="container"></div>
-    <ul id="list">
-      <!--<li> 15,"Willem",11467 </li>-->
-    </ul>
-    <script src="js/array2.js"></script>
+    <h3>자바스크립트 2</h3>
+
+    <div class="container">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>FirstName</th>
+            <th>LastName</th>
+            <th>Salary</th>
+          </tr>
+        </thead>
+        <tbody id="target"></tbody>
+      </table>
+    </div>
+    <!--페이지 목록 시작-->
+    <nav aria-label="Page navigation example">
+      <ul class="pagination justify-content-center"></ul>
+    </nav>
+    <!--페이지 목록 끝-->
+    <script src="js/function1.js"></script>
+    <script src="js/function3.js"></script>
   </body>
 </html>
