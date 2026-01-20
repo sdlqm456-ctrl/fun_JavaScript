@@ -1,6 +1,6 @@
 // spread(펼침) operator: 객체나 배열 등 값이나 인자를 한꺼번에 집어넣는 역활
 // ...배열명(spread 문법): 배열안의 값을 하나하나 펼쳐서 꺼내는 역활
-// 객체나 배열을 좀더 효과적으로 다룰수 있음
+// 객체나 배열을 좀더 효과적으로 다룰수 있다는 장점
 
 const friends = ["park", "Choi", "Kim"];
 console.log(...friends);
