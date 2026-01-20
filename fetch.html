@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <!--- REST Api: 웹서비스가 서로 통신을 하기위한 표준 설계규칙 
+  1. HTTP 메소드(GET, POST, PUT, DELETE)를 사용하여 CRUD(생성, 읽기, 수정, 삭제) 작업을 수행
+  2. 서버와 데이터를 주고 받을때 가장 보편적이고 효율적인 방법
+
+    - GET: 자원 조회 (Read)
+    - POST: 자원 생성 (Create)
+    - PUT/PATCH: 자원 수정 (Update)
+    - DELETE: 자원 삭제 (Delete) -->
+  <body>
+    <h3>REST Api</h3>
+    <p>Create, Read, Update, Delete => Post, Get, Put, Delete</p>
+    <p>Resource (url = "http://192.168.0.34:3000/posts")</p>
+    <button onclick="addPost()">Post 요청</button>
+    <br />
+    <button onclick="modifyPost()">Put 요청</button><br />
+    <button onclick="removePost()">Delete 요청</button><br />
+    <script>
+      function removePost() {
+        // Delete 요청 방식
+        fetch("http://localhost:3000/posts/24aa", {
+          method: "delete",
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            comsole.log(data);
+          })
+          .catch((err) => console.log(err));
+      }
+      function modifyPost() {
+        //Put 요청방식
+        fetch("http://localhost:3000/posts/3", {
+          method: "put",
+          headers: { "content-Type": "application/json" },
+          body: JSON.stringify({ title: "3번글 변경됨", author: "user01" }),
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            comsole.log(data);
+          })
+          .catch((err) => console.log(err));
+      }
+
+      function addPost() {
+        // addPost()를 해야 데이터가 무한으로 생성되지 않음
+        // Post 방식
+        fetch("http://localhost:3000/posts", {
+          method: "post",
+          headers: { "content-Type": "application/json" },
+          body: JSON.stringify({ title: "새로운 글 등록", author: "user01" }),
+        })
+          .then((resp) => resp.json())
+          .then((data) => {
+            comsole.log(data);
+          })
+          .catch((err) => console.log(err));
+      }
+    </script>
+  </body>
+</html>

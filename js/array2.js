@@ -28,7 +28,7 @@ console.log(arrayEvery); // 출력값: false
 fetch("js/data3.json")
   .then((resp) => resp.json())
   .then((data) => {
-    console.log("전체 데이터 확인:", data);
+    console.log("전체 상품목록:", data);
 
     // 1. 회의용품 카테고리 중 첫 번째 상품명과 가격
     const meetingItem = data.find((e) => e.상품카테고리 === "회의용품");
@@ -36,6 +36,8 @@ fetch("js/data3.json")
       `회의용품 첫 상품명: ${meetingItem.상품명}, 가격: ${meetingItem.가격}`,
     );
     // // 2. 판매자명이 펜스토어인 상품의 가격이 1000원 이상인지 판별
+    // &&: 두 연산자가 모두 참이면 true / 아닌 경우면 false
+    // ===: 값과 데이터 타입 모두 비교 => 참(true) 또는 거짓(false)을 반환
     const Item = data.some(
       (e) => e.판매자정보.판매자명 === "펜스토어" && e.가격 >= 1000,
     );
