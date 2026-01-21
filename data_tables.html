@@ -39,6 +39,7 @@
     <script>
       const table = new DataTable("#example", {
         ajax: "http://localhost:3000/members",
+        // columns: 서버에서 받아온 객체의 속성이름과 테이블 컬럼을 매칭시켜 각 행에 값을 채워넣기
         columns: [
           { data: "id" },
           { data: "first_name" },
@@ -47,19 +48,23 @@
           { data: "gender" },
           { data: "salary" },
         ],
+        // 한 페이지에 보여줄 행의 갯수옵션 정하기 (-1은 전체보기)
         lengthMenu: [10, 15, 25, 50, -1],
       });
       // 기존코드
       table.on("click", "tbody tr", (e) => {
+        // 클릭한 행의 class 목록 가져오기
         let classList = e.currentTarget.classList;
+        // 클릭한 행이 이미 강조된 상태면 강조 해제
         if (classList.contains("selected")) {
           classList.remove("selected");
+          // 선택이 안된 상태라면
         } else {
           table
-            .rows(".selected")
-            .nodes()
+            .rows(".selected") // 기존에 선택된 모든 행 찾기
+            .nodes() // DOM 요소 <tr>로 반환
             .each((row) => row.classList.remove("selected"));
-          classList.add("selected");
+          classList.add("selected"); // 지금 클릭한 행에 selected 추가
         }
       });
       // 삭제
