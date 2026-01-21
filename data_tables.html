@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="//cdn.datatables.net/2.3.6/css/dataTables.dataTables.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+  <script src="//cdn.datatables.net/2.3.6/js/dataTables.min.js"></script>
+  <body>
+    <button class="deleteRow">선택삭제</button>
+    <button class="addRow">추가</button>
+    <table id="example" class="display">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>first_name</th>
+          <th>last_name</th>
+          <th>email</th>
+          <th>gender</th>
+          <th>Salary</th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <th>id</th>
+          <th>first_name</th>
+          <th>last_name</th>
+          <th>email</th>
+          <th>gender</th>
+          <th>Salary</th>
+        </tr>
+      </tfoot>
+    </table>
+    <script>
+      const table = new DataTable("#example", {
+        ajax: "http://localhost:3000/members",
+        columns: [
+          { data: "id" },
+          { data: "first_name" },
+          { data: "last_name" },
+          { data: "email" },
+          { data: "gender" },
+          { data: "salary" },
+        ],
+        lengthMenu: [10, 15, 25, 50, -1],
+      });
+      // 기존코드
+      table.on("click", "tbody tr", (e) => {
+        let classList = e.currentTarget.classList;
+        if (classList.contains("selected")) {
+          classList.remove("selected");
+        } else {
+          table
+            .rows(".selected")
+            .nodes()
+            .each((row) => row.classList.remove("selected"));
+          classList.add("selected");
+        }
+      });
+      // 삭제
+      document
+        .querySelector(".deleteRow")
+        .addEventListener("click", function () {
+          // data 삭제
+          fetch("url")
+            .then((resp) => resp.json())
+            .then((data) => {
+              // 화면에서 선택된 영역 지우기
+              table.row(".selected").remove().draw(false);
+            })
+            .catch((err) => {
+              console.log(err);
+              table.row(".selected").remove().draw(false);
+            });
+        });
+      // 함수선언 (한건 추가)
+      function addNewRow(obj = {}) {
+        table.row
+          .add({
+            id: odj.id,
+            first_name: obj.fn,
+            last_name: obj.ln,
+            email: obj.email,
+            gender: obj.gender,
+            salary: obj.salary,
+          })
+          .draw(false);
+      }
+      // 추가버튼 이벤트
+      document.querySelector(".addRow").addEventListener("click", (e) => {
+        const id = "101";
+        const fn = "Kildong";
+        const ln = "hong";
+        const email = "hong@naver.com";
+        const gender = "Male";
+        const salary = 1000;
+
+        addNewRow({
+          id: id,
+          fn: fn,
+          ln: ln,
+          email: email,
+          gender: gender,
+          salary: salary,
+        });
+      });
+    </script>
+  </body>
+</html>

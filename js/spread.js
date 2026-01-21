@@ -18,5 +18,5 @@ console.log(clone2, friends);
 const clone3 = [];
 clone.push(...friends);
 
-// 배열 (object)
+// 배열 (object): 변수에 객체의 주소값을 참조하는 변수
 console.log(clone3);
