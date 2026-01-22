@@ -2,20 +2,22 @@
 
 // promise: 함수를 매개값으로 받는 객체
 // 요청중 상태: 1. pending 2. fulfilled 3. rejected 상태
+
 // resolve: 프로미스를 성공 상태로 만들고 결과를 전달
-const promise = new Promise(function (resolve, reject) {
+// promise 선언
+const promise = new Promise((resolve, reject) => {
   console.log("Promise 생성");
-  reject("OK"); // 프로미스 객체에서 비동기 작업의 실패를 알리고 오류 전달
+  reject("OK"); // 프로미스 객체에서 비동기 작업의 실패를 알리고 오류 전달 (실패의 의미라서 catch에 전달)
 });
 
 // 비동기처리 (프로미스 결과처리)
 promise
-  // 비동기 작업이 성공하면 실행
-  .then(function (data) {
+  // 비동기 작업이 성공하면 실행 (resolve에서 받아온 값이 출력됨)
+  .then((data) => {
     console.log(data);
   })
-  // 비동기 작업이 실패하면 실행
-  .catch(function (err) {
+  // 비동기 작업이 실패하면 실행 (reject에서 받아온 값을 출력)
+  .catch((err) => {
     console.error(err);
   });
 
@@ -26,7 +28,7 @@ let count = 1; // 시작값 (전역 변수)
 const p1 = new Promise(function (resolve, reject) {
   setTimeout(() => {
     count = count * 2; // 1초 기다렸다가 count = 1 * 2 = 2 실행
-    resolve(count); // 성공상태 + 갑: 2 전달
+    resolve(count); // 성공상태 + 값: 2 전달
   }, 1000); // 실행함수 / 인터벌
 });
 
